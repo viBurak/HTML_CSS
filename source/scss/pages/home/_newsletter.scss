@@ -1,0 +1,238 @@
+.newsletter {
+	@include container;
+
+	margin: 265px auto 65px;
+	display: flex;
+	justify-content: space-between;
+
+	@include respond_to(to_desktop) {
+		margin: 170px auto 65px;
+	}
+
+	@include respond_to(mobile_to_tablet){
+		margin: 120px auto 65px;
+	}
+
+	&-form {
+		flex: 1 1 percentage($site-width, 530);
+		max-width: percentage($site-width, 530);
+
+		@include respond_to(to_tablet){
+			flex: 1 1 percentage(768, 500);
+			max-width: percentage(768, 500);
+		}
+
+		@include respond_to(mobile_to_tablet){
+			flex: 1 1 100%;
+			max-width: 100%;
+		}
+
+		&.filled {
+			.newsletter {
+				&-polices {
+					display: block;
+				}
+
+				&-submit {
+					display: block;
+				}
+
+				&-input {
+					border-bottom: 1px solid $blue02;
+				}
+			}
+		}
+
+		&.active {
+			.newsletter {
+				&-submit {
+					opacity: 1;
+				}
+			}
+		}
+
+		&.error {
+			.newsletter {
+				&-valid {
+					display: block;
+				}
+			}
+		}
+
+		&.success {
+			.newsletter {
+				&-thank_you {
+					display: block;
+				}
+
+				&-field {
+					display: none;
+				}
+
+				&-polices {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&-thank_you {
+		font-size: rem(12);
+		color: $black01;
+		font-weight: $bold;
+		margin-top: 25px;
+		display: none;
+	}
+
+	&-headline {
+		color: $black01;
+		margin-bottom: 15px;
+		text-transform: uppercase;
+	}
+
+	&-description {
+		font-size: rem(12);
+		color: $black01;
+		margin-bottom: 15px;
+	}
+
+	&-field {
+		position: relative;
+		width: 100%;
+
+		&.error {
+			.newsletter {
+				&-input {
+					border-bottom: 1px solid $red01;
+				}
+
+				&-valid {
+					display: block;
+				}
+			}
+		}
+	}
+
+	&-input {
+		font-size: rem(12);
+		width: 100%;
+		border-bottom: 1px solid $blue01;
+		padding-right: 75px;
+
+		&::placeholder {
+			color: $grey04;
+		}
+	}
+
+	&-submit {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-weight: $bold;
+		font-size: rem(13);
+		color: $black01;
+		text-transform: uppercase;
+		opacity: 0.3;
+		transition: opacity 0.6s ease-in;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	&-polices {
+		margin-top: 20px;
+		display: none;
+
+		&-checkbox {
+			display: none;
+
+			&:checked {
+				~ .newsletter {
+					&-label {
+						&::after {
+							background: $blue02;
+							border: 1px solid $blue02;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-valid {
+		display: none;
+		color: $red01;
+		font-size: rem(12);
+		margin-top: 12px;
+	}
+
+	&-label {
+		@include icon(arrow);
+
+		font-size: rem(12);
+		color: $black01;
+		position: relative;
+		padding-left: 25px;
+
+		&:hover {
+			&::after {
+				border: 1px solid $blue02;
+			}
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 14px;
+			width: 14px;
+			border: 1px solid $blue01;
+		}
+
+		&::before {
+			position: absolute;
+			top: 3px;
+			left: 5px;
+			transform: rotate(90deg);
+			font-size: rem(10);
+			color: #ffffff;
+			z-index: 1;
+		}
+	}
+
+	&-link {
+		display: inline;
+		text-decoration: underline;
+		font-size: rem(12);
+		color: $black01;
+	}
+
+	.payment {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: flex-end;
+
+		&-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+
+		&-item {
+			margin-left: 20px;
+			filter: grayscale(100%);
+
+			@include respond_to(to_tablet){
+				min-width: 30%;
+			}
+
+			&:hover {
+				filter: grayscale(0%);
+			}
+		}
+	}
+}

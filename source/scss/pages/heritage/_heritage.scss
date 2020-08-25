@@ -1,0 +1,157 @@
+/* HERITAGE */
+
+.heritage {
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 200px;
+
+	@include respond_to(tablet) {
+		margin-bottom: 80px;
+	}
+
+	@include respond_to(mobile) {
+		margin-bottom: 55px;
+	}
+
+	&-image {
+		max-width: none;
+
+		@include respond_to(to_desktop) {
+			width: 100%;
+			max-height: none;
+		}
+
+		&-wrapper {
+			width: percentage(1600, 1008);
+			height: 900px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+
+			@include respond_to(desktop_small) {
+				width: percentage(1360, 836);
+			}
+
+			@include respond_to(to_desktop) {
+				width: 100%;
+			}
+
+			@include respond_to(tablet) {
+				height: 620px;
+			}
+
+			@include respond_to(mobile) {
+				height: 320px;
+			}
+		}
+	}
+
+	&-content {
+		width: percentage(1312, 665);
+
+		@include respond_to(to_desktop) {
+			width: 100%;
+		}
+
+		@include respond_to(tablet) {
+			padding: 20px 35px 0;
+		}
+
+		@include respond_to(mobile) {
+			padding: 20px 20px 0;
+		}
+
+		&-wrapper {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+			max-width: 1312px;
+			margin: 0 auto;
+
+			@include respond_to(desktop_small) {
+				max-width: 984px;
+			}
+
+			@include respond_to(to_desktop) {
+				position: relative;
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	&-subtitle {
+		font-size: rem(12);
+		color: $black01;
+		margin-bottom: 25px;
+	}
+
+	&-information {
+		font-size: rem(18);
+		margin-bottom: 150px;
+
+		@include respond_to(to_desktop) {
+			margin-bottom: 75px;
+		}
+
+		@include respond_to(mobile) {
+			font-size: rem(14);
+		}
+	}
+
+	&-list {
+		width: percentage(665, 307);
+
+		@include respond_to(tablet) {
+			width: percentage(700, 265)
+		}
+
+		@include respond_to(mobile) {
+			width: 100%;
+		}
+
+		&-wrapper {
+			display: flex;
+			justify-content: flex-end;
+
+			@include respond_to(to_desktop) {
+				justify-content: center;
+			}
+		}
+	}
+
+	&-item {
+		padding: 0 30px;
+		text-align: center;
+
+		& + & {
+			border-top: 1px dashed $blue01;
+			margin-top: 30px;
+			padding-top: 25px;
+		}
+	}
+
+	&-link {
+		font-size: rem(14);
+		font-weight: bold;
+		color: $black01;
+		line-height: 1.5;
+		letter-spacing: 1px;
+		display: inline-block;
+		border-bottom: 1px solid transparent;
+
+		&:hover {
+			border-bottom: 1px solid $black01;
+			text-decoration: none;
+		}
+	}
+
+	&-description {
+		font-size: rem(12);
+		line-height: 1.6;
+	}
+}
+

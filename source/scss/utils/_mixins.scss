@@ -1,0 +1,129 @@
+// CLEARFIX
+
+@mixin clearfix {
+   &:after {
+      content: "";
+      display: table;
+      clear: both;
+      width: 100%;
+   }
+}
+
+// PIXEL TO REM
+
+@function rem($value) {
+   @return ($value / $base-font-size + rem);
+}
+
+// PERCENTAGE
+
+@function percentage($parent, $current) {
+   @return ($current / $parent * 100%);
+}
+
+// WIDTH PERCENTAGE
+
+@mixin percentage($parent, $current) {
+   width: $current / $parent * 100%;
+}
+
+// DISPLAY INLINE-BLOCK
+
+@mixin inline-block {
+   display: inline-block;
+   vertical-align: top;
+}
+
+@mixin container {
+	max-width: $site-width + px;
+	padding: 0 20px;
+   width: 100%;
+	margin: 0 auto;
+
+	@include respond_to(tablet) {
+		padding: 0 35px;
+	}
+
+	@include respond_to(desktop_small) {
+		max-width: 1025px;
+	}
+}
+
+// RESPONSE
+
+$mobile: 320;
+$mobile_horizontal: 460;
+$tablet: 768;
+$desktop: 1024;
+$desktop_large: 1440;
+
+
+@mixin respond_to($device) {
+   @if($device==mobile) {
+      @media(min-width: $mobile + px) and (max-width: $tablet - 1 + px) {
+         @content;
+      }
+   }
+
+   @else if($device==tablet) {
+      @media (min-width: $tablet + px) and (max-width: $desktop - 1 + px) {
+         @content;
+      }
+   }
+
+   @else if($device==desktop) {
+      @media(min-width: $desktop) {
+         @content;
+      }
+	}
+
+	@else if($device==desktop_small) {
+      @media (min-width: $desktop + px) and (max-width: $desktop_large - 1 + px) {
+         @content;
+      }
+	}
+
+	@else if($device==desktop_large) {
+      @media(min-width: $desktop) {
+         @content;
+      }
+   }
+
+   @else if($device==to_desktop) {
+      @media(min-width: $mobile + px) and (max-width: $desktop - 1 + px) {
+         @content;
+      }
+   }
+
+   @else if($device==from_tablet) {
+      @media(min-width: $tablet + px) {
+         @content;
+      }
+	}
+
+	@else if($device==to_tablet) {
+      @media(max-width: $tablet + px) {
+         @content;
+      }
+	}
+
+	@else if($device==mobile_to_tablet) {
+      @media(max-width: $tablet - 1 + px) {
+         @content;
+      }
+	}
+
+
+	@else if($device==mobile_horizontal) {
+		@media(min-width: $mobile + px) and (max-width: $mobile_horizontal + px) {
+			@content;
+		}
+	}
+}
+
+
+// RESPONSE BOX
+
+@mixin response($parent, $current) {
+	padding-bottom: $current / $parent * 100%;
+}
